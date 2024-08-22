@@ -7,12 +7,12 @@ export const users = pgTable("users", {
   email: varchar("email", { length: 256 }),
 });
 
-// export const posts = pgTable("posts", {
-//   id: serial("id").primaryKey(),
-//   title: varchar("title", { length: 256 }),
-//   content: varchar("content", { length: 256 }),
-//   userId: integer("userId"),
-// });
+export const posts = pgTable("posts", {
+  id: serial("id").primaryKey(),
+  title: varchar("title", { length: 256 }),
+  content: varchar("content", { length: 256 }),
+  userId: integer("userId"),
+});
 
 export const usersRelations = relations(users, ({ many }) => ({
   posts: many(posts),
