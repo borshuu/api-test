@@ -4,6 +4,6 @@ import { Router } from "express";
 
 const usersRouter = Router();
 
-usersRouter.post("/register", register).get("/login", login)
-
+usersRouter.post("/register", register);
+usersRouter.post("/login", login);
 export { usersRouter };
