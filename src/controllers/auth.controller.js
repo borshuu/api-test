@@ -1,5 +1,7 @@
 import { users } from "../database/schema.js";
 import { db } from "../database/index.js";
+import bcrypt from "bcrypt"
+import jwt from "jsonwebtoken"
 
 export const login = async (req, res) => {
   const users = await db.query.users.findMany({
