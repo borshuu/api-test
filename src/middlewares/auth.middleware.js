@@ -1,4 +1,4 @@
-import jwt from "jsonwebtoken"
+import jwt from "jsonwebtoken";
 export const authMiddleware = (req, res, next) => {
   if (req.path.startsWith("/auth")) return next();
 
