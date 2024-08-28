@@ -9,7 +9,9 @@ import { authMiddleware } from "./middlewares/auth.middleware.js";
 
 config();
 
+
 const app = express();
+
 
 app.use(cors());
 app.use(express.json());
