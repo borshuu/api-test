@@ -9,11 +9,14 @@ import { authMiddleware } from "./middlewares/auth.middleware.js";
 
 config();
 
-
 const app = express();
 
-
-app.use(cors());
+const corsOrigin ={
+  origin:'http://localhost:3000', //or whatever port your frontend is using
+  credentials:true,            
+  optionSuccessStatus:200
+}
+app.use(cors(corsOrigin));
 app.use(express.json());
 // app.use(cookieParser());
 
