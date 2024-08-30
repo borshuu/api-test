@@ -18,12 +18,13 @@ const corsOrigin ={
 }
 app.use(cors(corsOrigin));
 app.use(express.json());
+app.use(authMiddleware);
 // app.use(cookieParser());
 
 app.use("/posts", postsRouter);
 app.use("/users", usersRouter);
 app.use("/auth", authRouter);
-app.use(authMiddleware);
+
 // app.use("/categories", categoryRouter);
 
 app.listen(3005, () => {

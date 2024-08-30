@@ -8,15 +8,31 @@ export const login = async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    const user = await db.query.users.findFirst({
+    const user = await db.query.users.findMany({
       where: eq(email, email),
     });
 
-    console.log('this is getting called',user)
+    console.log("this is getting called", user);
 
+    const token = jwt.sign(
+      {
+        name: user.name,
+        email: user.email,
+        id: user.id,
+      },
+      process.env.JWT_SECRET
+    );
+
+    res.json({
+      message: "Success",
+      token,
+      user: {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+      },
+    });
     if (!user) return res.status(401).json({ message: "Invalid credentials" });
-
-    res.json(user);
   } catch (error) {
     console.error("Error fetching user:", error.message);
     res.status(500).json({ message: "Internal server error" });
